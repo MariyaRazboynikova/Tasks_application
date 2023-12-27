@@ -24,6 +24,7 @@ class DialogBox extends StatelessWidget {
           children: [
             // get user input
             TextField(
+              autofocus: true,
               controller: controller,
               decoration: InputDecoration(
                 border: OutlineInputBorder(),

@@ -47,11 +47,15 @@ class _HomePageState extends State<HomePage> {
       db.toDoList.add([_controller.text, false]);
       _controller.clear();
     });
+    String textToSendBack = _controller.text;
+    if (textToSendBack != null) {
+      Navigator.pop(context, textToSendBack);
+    }
     Navigator.of(context).pop();
     db.updateDatabase();
   }
 
-  //добав новой задчи
+  //добавление новой задчи
   void createNewTask() {
     showDialog(
       context: context,
