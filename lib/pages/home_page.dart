@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
     db.updateDatabase();
   }
 
-  //сохранение задачи
+  //save task
   void saveNewTask() {
     setState(() {
       db.toDoList.add([_controller.text, false]);
@@ -69,33 +69,33 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-// // функция удаления задачи
-//   void deleteTask(int index) {
-//     setState(() {
-//       showDialog(
-//         context: context,
-//         builder: (BuildContext context) {
-//           return DeleteConfirmationDialog(
-//             onCancel: () {
-//               Navigator.of(context).pop();
-//             },
-//             deleteFunction: () {
-//               db.toDoList.removeAt(index);
-//             },
-//           );
-//         },
-//       );
-//       db.updateDatabase();
-//     });
-//     db.updateDatabase();
-//   }
-
+// функция удаления задачи
   void deleteTask(int index) {
     setState(() {
-      db.toDoList.removeAt(index);
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return DeleteConfirmationDialog(
+            onCancel: () {
+              Navigator.of(context).pop();
+            },
+            deleteFunction: () {
+              db.toDoList.removeAt(index);
+            },
+          );
+        },
+      );
+      db.updateDatabase();
     });
     db.updateDatabase();
   }
+
+  // void deleteTask(int index) {
+  //   setState(() {
+  //     db.toDoList.removeAt(index);
+  //   });
+  //   db.updateDatabase();
+  // }
 
   @override
   Widget build(BuildContext context) {
